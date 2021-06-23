@@ -1,4 +1,4 @@
-package com.nj.jvm;
+package com.nj.jvm.day01;
 
 public class Hello {
     public static void main(String[] args) {
