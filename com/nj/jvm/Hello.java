@@ -1,4 +1,4 @@
-package com.deceen.jvm;
+package com.nj.jvm;
 
 public class Hello {
     public static void main(String[] args) {

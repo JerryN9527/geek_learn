@@ -1,4 +1,4 @@
-package com.deceen.jvm;
+package com.nj.jvm;
 
 public class MovingAverage {
     private int count = 0;

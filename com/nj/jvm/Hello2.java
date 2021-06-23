@@ -1,4 +1,4 @@
-package com.deceen.jvm;
+package com.nj.jvm;
 
 public class Hello2 {
     private static int[] numbers={1,6,8};
