@@ -1,4 +1,4 @@
-package com.nj.jvm.day01;
+package com.nj.learn.demo.jvm.day01;
 
 public class MovingAverage {
     private int count = 0;
