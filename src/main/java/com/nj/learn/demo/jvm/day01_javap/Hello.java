@@ -1,4 +1,4 @@
-package com.nj.learn.demo.jvm.day01;
+package com.nj.learn.demo.jvm.day01_javap;
 
 public class Hello {
     public static void main(String[] args) {

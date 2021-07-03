@@ -1,4 +1,4 @@
-package com.nj.jvm.day02;
+package com.nj.learn.demo.jvm.day02_classload;
 
 import java.io.*;
 import java.util.Base64;

@@ -1,4 +1,4 @@
-package com.nj.learn.demo.jvm.day03;
+package com.nj.learn.demo.jvm.day03_gc;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;

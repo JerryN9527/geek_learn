@@ -1,4 +1,4 @@
-package com.nj.jvm.day02;
+package com.nj.learn.demo.jvm.day02_classload;
 
 public class Hello {
     public Hello() {
