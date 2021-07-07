@@ -18,6 +18,9 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 /**
  *
+ * 自定义HttpHandler 继承入站适配器，添加相应的处理业务逻辑
+ * 捕获请求进来（入站事件）的处理
+ * 扩展：
  * 事件处理程序接口：ChannelHandler                         两个具体实现各有一个适配器：（空实现，需要继承使用）
  *       两个具体实现：ChannelOutBoundHandler 出站事件处理        ChannelInboundHandlerAdapter
  *                  ChannelInBoundHandler  入站事件处理        ChannelOutboundHandlerAdapter

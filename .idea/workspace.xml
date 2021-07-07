@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c656b09-f2a7-4a92-a1db-85acb313f71a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/LearnApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day02/Hello.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/jvm/2021-06-26_222120.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/jvm/XlassLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/jvm/Hello.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/jvm/Hello2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/jvm/HelloBase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/jvm/jvm内存结构.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nj/learn/LearnApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/Hello.xlass" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/jvm/Hello.xlass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day01/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day01/Hello.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day01/Hello2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day01/Hello2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day01/MovingAverage.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day01/MovingAverage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day01/MovingAverage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day01/MovingAverage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day02/FileToBase64.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day02/FileToBase64.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day02/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day02/Hello.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day02/HelloClassLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day02/HelloClassLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/nj/jvm/day02/TestClassLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/jvm/day02/TestClassLoader.java" afterDir="false" />
+    <list default="true" id="ccede3c3-7a0b-411c-9464-79b1db1baab3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/nio/day05_netty/HttpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/nio/day05_netty/HttpHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/nio/day05_netty/HttpInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/nio/day05_netty/HttpInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/nio/day05_netty/NettyHttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nj/learn/demo/nio/day05_netty/NettyHttpServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +142,53 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="geekLearn" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="geekLearn" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Demo1Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo1.Demo1Application" />
@@ -176,9 +208,9 @@
       <item itemvalue="Application.FileToBase64" />
       <item itemvalue="Application.TestClassLoader" />
       <item itemvalue="Application.Hello1" />
+      <item itemvalue="Application.XlassLoader" />
       <item itemvalue="Spring Boot.LearnApplication" />
       <item itemvalue="Spring Boot.Demo1Application" />
-      <item itemvalue="Application.XlassLoader" />
     </list>
     <recent_temporary>
       <list>
@@ -218,6 +250,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1" />
