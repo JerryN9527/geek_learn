@@ -3,6 +3,17 @@ package com.nj.learn.demo.jvm.day02_classload;
 import java.io.*;
 import java.util.Base64;
 
+/**
+ * 三类加载器：
+ * 1. 启动类加载器（BootstrapClassLoader）
+ * 2. 扩展类加载器（ExtClassLoader）
+ * 3. 应用类加载器（AppClassLoader）
+ *
+ * 加载器特点：
+ * 1. 双亲委托
+ * 2. 负责依赖
+ * 3. 缓存加载
+ */
 public class HelloClassLoader extends ClassLoader{
 
     public static void main(String[] args) throws Exception {
