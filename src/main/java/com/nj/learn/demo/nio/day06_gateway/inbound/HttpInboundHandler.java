@@ -1,5 +1,7 @@
 package com.nj.learn.demo.nio.day06_gateway.inbound;
 
+import com.nj.learn.demo.nio.day06_gateway.filter.HeaderHttpRequestFilter;
+import com.nj.learn.demo.nio.day06_gateway.filter.HttpRequestFilter;
 import com.nj.learn.demo.nio.day06_gateway.outbound.httpclient4.HttpOutboundHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -8,16 +10,20 @@ import io.netty.util.ReferenceCountUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 /**
  * 入站事件处理
  */
 public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
     private static Logger logger = LoggerFactory.getLogger(HttpInboundHandler.class);
-    private String proxyServer;
+    private final List<String> proxyServer;
     private HttpOutboundHandler handler;
+    private HttpRequestFilter filter = new HeaderHttpRequestFilter();
 
-    public HttpInboundHandler(String proxyServer) {
+    public HttpInboundHandler(List<String> proxyServer) {
         this.proxyServer = proxyServer;
+        this.handler = new HttpOutboundHandler(this.proxyServer);
     }
 
     @Override
@@ -39,7 +45,7 @@ public class HttpInboundHandler extends ChannelInboundHandlerAdapter {
 //                handlerTest(fullRequest, ctx);
 //            }
 
-            handler.handle(fullRequest, ctx);
+            handler.handle(fullRequest, ctx,filter);
         }catch (Exception e){
             e.printStackTrace();
         }finally {

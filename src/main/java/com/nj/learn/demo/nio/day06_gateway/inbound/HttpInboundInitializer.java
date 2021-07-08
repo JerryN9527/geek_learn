@@ -6,6 +6,8 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 
+import java.util.List;
+
 
 /**
  * 自定义HttpInitializer初始化机制继承 ChannelInitializer
@@ -14,9 +16,9 @@ import io.netty.handler.codec.http.HttpServerCodec;
  */
 public class HttpInboundInitializer extends ChannelInitializer<SocketChannel> {
 
-    private String proxyServer;
+    private List<String> proxyServer;
 
-    public HttpInboundInitializer(String proxyServer) {
+    public HttpInboundInitializer(List<String> proxyServer) {
         this.proxyServer = proxyServer;
     }
 
