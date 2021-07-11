@@ -13,11 +13,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.concurrent.FutureCallback;
 import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
+import org.apache.http.impl.nio.client.HttpAsyncClients;
+import org.apache.http.impl.nio.reactor.IOReactorConfig;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 import static io.netty.handler.codec.http.HttpResponseStatus.NO_CONTENT;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
@@ -37,10 +40,35 @@ public class HttpOutboundHandler{
     HttpResponseFilter filter = new HeaderHttpResponseFilter();
     HttpEndpointRouter router = new RandomHttpEndpointRouter();
 
-    public HttpOutboundHandler(List<String> proxyServer) {
+    public HttpOutboundHandler(List<String> backends) {
+        this.backendUrls = backends.stream().map(this::formatUrl).collect(Collectors.toList());
 
+        int cores = Runtime.getRuntime().availableProcessors();
+        long keepAliveTime = 1000;
+        int queueSize = 2048;
+        RejectedExecutionHandler handler = new ThreadPoolExecutor.CallerRunsPolicy();//.DiscardPolicy();
+        proxyService = new ThreadPoolExecutor(cores, cores,
+                keepAliveTime, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(queueSize),
+                new NamedThreadFactory("proxyService"), handler);
+
+        IOReactorConfig ioConfig = IOReactorConfig.custom()
+                .setConnectTimeout(1000)
+                .setSoTimeout(1000)
+                .setIoThreadCount(cores)
+                .setRcvBufSize(32 * 1024)
+                .build();
+
+        httpclient = HttpAsyncClients.custom().setMaxConnTotal(40)
+                .setMaxConnPerRoute(8)
+                .setDefaultIOReactorConfig(ioConfig)
+                .setKeepAliveStrategy((response,context) -> 6000)
+                .build();
+        httpclient.start();
     }
 
+    private String formatUrl(String backend) {
+        return backend.endsWith("/")?backend.substring(0,backend.length()-1):backend;
+    }
 
     /**
      * 处理业务请求规则
