@@ -19,3 +19,26 @@
 
 &emsp;&emsp;作业：[TestOkHttpClient](src/main/java/com/nj/learn/nio/TestOkHttpClient.java)  
 
+### 第3周作业
+
+1.（必做）整合你上次作业的 httpclient/okhttp；  
+
+&emsp;&emsp;作业：[OkhttpOutboundHandler](src/main/java/com/nj/learn/nio/gateway/outbound/okhttp/OkhttpOutboundHandler.java)  
+
+3.（必做）实现过滤器。  
+
+&emsp;&emsp;作业：[HeaderHttpRequestFilter](src/main/java/com/nj/learn/nio/gateway/filter/HeaderHttpRequestFilter.java)  
+&emsp;&emsp;&emsp;&emsp;：[HeaderHttpResponseFilter](src/main/java/com/nj/learn/nio/gateway/filter/HeaderHttpResponseFilter.java)  
+
+4.（选做）实现路由。  
+
+&emsp;&emsp;作业：[RandomHttpEndpointRouter](src/main/java/com/nj/learn/nio/gateway/router/RandomHttpEndpointRouter.java)  
+
+
+
+
+
+6.（必做）写一段代码，使用 HttpClient 或 OkHttp 访问 http://localhost:8801 ，代码提交到 GitHub   
+
+&emsp;&emsp;作业：[TestOkHttpClient](src/main/java/com/nj/learn/nio/TestOkHttpClient.java)  
+
