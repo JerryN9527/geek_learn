@@ -1,12 +1,11 @@
-package com.nj.learn.demo.jvm.day02_classload;
+
+
+import java.util.Date;
 
 public class Hello {
-    public Hello() {
-        hello();
-    }
 
-    public void hello() {
-        System.out.println("Hello, classLoader!");
+    public Date hello() {
+        return new Date();
     }
 
 }

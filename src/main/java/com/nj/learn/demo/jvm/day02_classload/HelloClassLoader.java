@@ -1,6 +1,7 @@
 package com.nj.learn.demo.jvm.day02_classload;
 
 import java.io.*;
+import java.lang.reflect.Method;
 import java.util.Base64;
 
 /**
@@ -17,29 +18,32 @@ import java.util.Base64;
 public class HelloClassLoader extends ClassLoader{
 
     public static void main(String[] args) throws Exception {
-        Hello hello=new Hello();
-
-        new HelloClassLoader().findClass("com.nj.jvm.day02.Hello").newInstance();
+//        Hello hello=new Hello();
+        Class<?> hello = new HelloClassLoader().findClass("Hello");
+        Object obj = hello.newInstance();
+        Method method = hello.getDeclaredMethod("hello");
+        Object invoke = method.invoke(obj);
+        System.out.println(invoke);
     }
 
     @Override
     protected Class<?> findClass(String name) {
-        String helloBase64="yv66vgAAADQAHgoABwAPCgAGABAJABEAEggAEwoAFAAVBwAWBwAXAQAGPGluaXQ+AQADKClWAQAE" +
-                "Q29kZQEAD0xpbmVOdW1iZXJUYWJsZQEABWhlbGxvAQAKU291cmNlRmlsZQEACkhlbGxvLmphdmEM" +
-                "AAgACQwADAAJBwAYDAAZABoBABNIZWxsbywgY2xhc3NMb2FkZXIhBwAbDAAcAB0BABZjb20vbmov" +
-                "anZtL2RheTAyL0hlbGxvAQAQamF2YS9sYW5nL09iamVjdAEAEGphdmEvbGFuZy9TeXN0ZW0BAANv" +
-                "dXQBABVMamF2YS9pby9QcmludFN0cmVhbTsBABNqYXZhL2lvL1ByaW50U3RyZWFtAQAHcHJpbnRs" +
-                "bgEAFShMamF2YS9sYW5nL1N0cmluZzspVgAhAAYABwAAAAAAAgABAAgACQABAAoAAAApAAEAAQAA" +
-                "AAkqtwABKrYAArEAAAABAAsAAAAOAAMAAAAEAAQABQAIAAYAAQAMAAkAAQAKAAAAJQACAAEAAAAJ" +
-                "sgADEgS2AAWxAAAAAQALAAAACgACAAAACQAIAAoAAQANAAAAAgAO" ;
+
+        String a = "new Date()";
+        String helloBase64="yv66vgAAADQAFAoABgAPCgAFABAHABEKAAMADwcAEgcAEwEABjxpbml0PgEAAygpVgEABENvZGUB" +
+                "AA9MaW5lTnVtYmVyVGFibGUBAAVoZWxsbwEAEigpTGphdmEvdXRpbC9EYXRlOwEAClNvdXJjZUZp" +
+                "bGUBAApIZWxsby5qYXZhDAAHAAgMAAsADAEADmphdmEvdXRpbC9EYXRlAQAFSGVsbG8BABBqYXZh" +
+                "L2xhbmcvT2JqZWN0ACEABQAGAAAAAAACAAEABwAIAAEACQAAACoAAQABAAAACiq3AAEqtgACV7EA" +
+                "AAABAAoAAAAOAAMAAAAGAAQABwAJAAgAAQALAAwAAQAJAAAAIAACAAEAAAAIuwADWbcABLAAAAAB" +
+                "AAoAAAAGAAEAAAALAAEADQAAAAIADg==" ;
         byte [] bytes= decode(helloBase64);
-        try {
-            BufferedOutputStream ou = new BufferedOutputStream(new FileOutputStream(new File("resources\\HelloBase.class")));
-            ou.write(bytes);
-            ou.flush();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+//        try {
+////            BufferedOutputStream ou = new BufferedOutputStream(new FileOutputStream(new File("E:\\nj\\geek_learn\\src\\main\\java\\com\\nj\\learn\\demo\\jvm\\day02_classload\\Hello.class")));
+////            ou.write(bytes);
+////            ou.flush();
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
         return defineClass(name,bytes,0,bytes.length);
     }
 
