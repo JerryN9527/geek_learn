@@ -1,5 +1,7 @@
 package com.nj.learn.demo.concurrent.muban.conc0303.future;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class CompletableFutureDemo {
@@ -10,7 +12,8 @@ public class CompletableFutureDemo {
         System.out.println("=====>1.变换结果");
         String result1 = CompletableFuture.supplyAsync(()->{return "Hello ";}).thenApplyAsync(v -> v + "world").join();
         System.out.println(result1);
-    
+
+
         // 2.消费
         CompletableFuture.supplyAsync(()->{return "Hello ";}).thenAccept(v -> { System.out.println("=====>2.消费");System.out.println("consumer: " + v);});
         

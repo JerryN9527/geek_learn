@@ -7,6 +7,7 @@ public class CyclicBarrierDemo {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(5, new Runnable() {
             @Override
             public void run() {
+                //到了聚合点，就开始执行
                 System.out.println("回调>>"+Thread.currentThread().getName());
                 System.out.println("回调>>线程组执行结束");
                 System.out.println("==>各个子线程执行结束。。。。");
@@ -16,11 +17,9 @@ public class CyclicBarrierDemo {
             new Thread(new readNum(i,cyclicBarrier)).start();
         }
         
-               // ==>>>
-        
-        
+               // ==>>
         System.out.println("==>主线程执行结束。。。。");
-        
+//        cyclicBarrier.reset();
         //CyclicBarrier 可以重复利用，
         // 这个是CountDownLatch做不到的
 //        for (int i = 11; i < 16; i++) {
@@ -39,9 +38,13 @@ public class CyclicBarrierDemo {
             synchronized (this){
                 System.out.println("id:"+id+","+Thread.currentThread().getName());
                 try {
-                    //cyc.await();
+                    System.out.println("线程组任务" + id + "kaishi，其他任务继续");
+                    Thread.sleep(5000);
+
+                    cyc.await();
+                    Thread.sleep(5000);
                     System.out.println("线程组任务" + id + "结束，其他任务继续");
-                    cyc.await();   // 注意跟CountDownLatch不同，这里在子线程await
+//                    cyc.await();   // 注意跟CountDownLatch不同，这里在子线程await
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

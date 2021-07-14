@@ -8,6 +8,7 @@ public class CountDownLatchDemo {
         for(int i=0;i<10;i++){
             new Thread(new readNum(i,countDownLatch)).start();
         }
+        //等到线程数完成减一，等减到0则开始主线程
         countDownLatch.await(); // 注意跟CyclicBarrier不同，这里在主线程await
         System.out.println("==>各个子线程执行结束。。。。");
         System.out.println("==>主线程执行结束。。。。");
