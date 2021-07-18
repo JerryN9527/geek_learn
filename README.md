@@ -36,9 +36,19 @@
 
 
 
-
-
 6.（必做）写一段代码，使用 HttpClient 或 OkHttp 访问 http://localhost:8801 ，代码提交到 GitHub   
 
 &emsp;&emsp;作业：[TestOkHttpClient](src/main/java/com/nj/learn/nio/TestOkHttpClient.java)  
+
+### 第4周作业
+
+2.（必做）思考有多少种方式，在 main 函数启动一个新线程，运行一个方法，拿到这
+个方法的返回值后，退出主线程? 写出你的方法，越多越好，提交到 GitHub。
+
+&emsp;&emsp;作业：[Homework](src/main/java/com/nj/learn/concurrent/Homework.java)  
+
+6.（必做）把多线程和并发相关知识梳理一遍，画一个脑图，截图上传到 GitHub 上。 可选工具:xmind，百度脑图，wps，MindManage，或其他。 
+
+&emsp;&emsp;作业：[多线程.jpg](src/main/java/com/nj/learn/concurrent/多线程.jpg)  
+&emsp;&emsp;&emsp;&emsp;：[HeaderHttpResponseFilter](src/main/java/com/nj/learn/nio/gateway/filter/HeaderHttpResponseFilter.java)  
 
