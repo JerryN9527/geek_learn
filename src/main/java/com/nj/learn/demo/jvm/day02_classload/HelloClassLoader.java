@@ -37,13 +37,6 @@ public class HelloClassLoader extends ClassLoader{
                 "AAABAAoAAAAOAAMAAAAGAAQABwAJAAgAAQALAAwAAQAJAAAAIAACAAEAAAAIuwADWbcABLAAAAAB" +
                 "AAoAAAAGAAEAAAALAAEADQAAAAIADg==" ;
         byte [] bytes= decode(helloBase64);
-//        try {
-////            BufferedOutputStream ou = new BufferedOutputStream(new FileOutputStream(new File("E:\\nj\\geek_learn\\src\\main\\java\\com\\nj\\learn\\demo\\jvm\\day02_classload\\Hello.class")));
-////            ou.write(bytes);
-////            ou.flush();
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
         return defineClass(name,bytes,0,bytes.length);
     }
 
