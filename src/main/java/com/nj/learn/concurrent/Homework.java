@@ -50,9 +50,24 @@ public class Homework {
         result = CompletableFuture.supplyAsync(()->worker()).get();
         System.out.println(Thread.currentThread().getName()+"-->主线程获取返回值：--"+result);
         System.out.println(Thread.currentThread().getName()+"-->退出主线程,使用时间："+(System.currentTimeMillis()-start));
+        //第5种 notify 唤醒 wait
+        System.out.println("-----------------第5种：----------------");
+        start = System.currentTimeMillis();
+        new Thread(()->{
+            synchronized (object){
+                Homework.result=worker();
+                object.notify();
+            }
+        }).start();
+        synchronized (object){
+            object.wait();
+        }
+        System.out.println(Thread.currentThread().getName()+"-->主线程获取返回值：--"+Homework.result);
+        System.out.println(Thread.currentThread().getName()+"-->退出主线程,使用时间："+(System.currentTimeMillis()-start));
 
     }
 
+    private static Object object=new Object();
     private static String result;
     private static volatile boolean  flag;
 
