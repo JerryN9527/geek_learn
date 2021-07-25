@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                        ">
+
+
+<bean id="student999"
+          class="io.kimmking.Student">
+        <property name="id" value="999" />
+        <property name="name" value="student999" />
+    </bean>
+
+    <bean id="student111"
+          class="io.kimmking.Student">
+        <property name="id" value="111" />
+        <property name="name" value="student111" />
+    </bean>
+
+    <bean id="class1" class="io.kimmking.Klass">
+        <property name="students">
+            <list>
+                <ref bean="student111" />
+                <ref bean="student999" />
+                <!--                <bean class="io.kimmking.spring01.Student">-->
+                <!--                    <property name="name" value="qq" />-->
+                <!--                    <property name="id" value="001" /> -->
+                <!--                </bean>-->
+            </list>
+        </property>
+    </bean>
+
+
+    <context:component-scan base-package="io.kimmking" />
+
+    <!--    <context:annotation-config />-->
+    <!--    -->
+    <bean id="school" class="io.kimmking.School">
+
+    </bean>
+
+
+</beans>

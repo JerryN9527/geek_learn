@@ -52,3 +52,15 @@
 &emsp;&emsp;作业：[多线程.jpg](src/main/java/com/nj/learn/concurrent/多线程.jpg)  
 &emsp;&emsp;&emsp;&emsp;：[java并发.jpg](src/main/java/com/nj/learn/concurrent/java并发.jpg)  
 
+### 第5周作业
+
+2.（必做）写代码实现 Spring Bean 的装配，方式越多越好（XML、Annotation 都可以）, 提交到 GitHub。
+
+&emsp;&emsp;作业：[SpringDemoApplication](src/main/java/com/nj/learn/school/src/main/java/io/kimmking/SpringDemoApplication.java) 自动装配  
+&emsp;&emsp;作业：[Application](src/main/java/com/nj/learn/spring/src/main/java/com/example/spring/Application.java)  引入starter
+
+6.（必做）把多线程和并发相关知识梳理一遍，画一个脑图，截图上传到 GitHub 上。 可选工具:xmind，百度脑图，wps，MindManage，或其他。 
+
+&emsp;&emsp;作业：[多线程.jpg](src/main/java/com/nj/learn/concurrent/多线程.jpg)  
+&emsp;&emsp;&emsp;&emsp;：[java并发.jpg](src/main/java/com/nj/learn/concurrent/java并发.jpg)  
+
