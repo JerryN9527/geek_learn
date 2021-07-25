@@ -50,7 +50,7 @@
 6.（必做）把多线程和并发相关知识梳理一遍，画一个脑图，截图上传到 GitHub 上。 可选工具:xmind，百度脑图，wps，MindManage，或其他。 
 
 &emsp;&emsp;作业：[多线程.jpg](src/main/java/com/nj/learn/concurrent/多线程.jpg)  
-&emsp;&emsp;&emsp;&emsp;：[java并发.jpg](src/main/java/com/nj/learn/concurrent/java并发.jpg)  
+&emsp;&emsp;作业：[java并发.jpg](src/main/java/com/nj/learn/concurrent/java并发.jpg)  
 
 ### 第5周作业
 
@@ -59,8 +59,10 @@
 &emsp;&emsp;作业：[SpringDemoApplication](src/main/java/com/nj/learn/school/src/main/java/io/kimmking/SpringDemoApplication.java) 自动装配  
 &emsp;&emsp;作业：[Application](src/main/java/com/nj/learn/spring/src/main/java/com/example/spring/Application.java)  引入starter
 
-6.（必做）把多线程和并发相关知识梳理一遍，画一个脑图，截图上传到 GitHub 上。 可选工具:xmind，百度脑图，wps，MindManage，或其他。 
+10.（必做）研究一下 JDBC 接口和数据库连接池，掌握它们的设计和用法：
+1）使用 JDBC 原生接口，实现数据库的增删改查操作。
+2）使用事务，PrepareStatement 方式，批处理方式，改进上述操作。
+3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。  
 
-&emsp;&emsp;作业：[多线程.jpg](src/main/java/com/nj/learn/concurrent/多线程.jpg)  
-&emsp;&emsp;&emsp;&emsp;：[java并发.jpg](src/main/java/com/nj/learn/concurrent/java并发.jpg)  
+&emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java) 增删改查   
 
