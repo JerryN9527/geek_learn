@@ -1,6 +1,7 @@
 package com.nj.learn.concurrent;
 
 import java.util.concurrent.*;
+import java.util.function.Consumer;
 
 /**
  * 2.（必做）思考有多少种方式，在 main 函数启动一个新线程，运行一个方法，拿到这

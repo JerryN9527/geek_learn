@@ -1,10 +1,19 @@
 package com.nj.learn.demo;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Solution {
 
 
     public static void main(String[] args) {
-        ListNode node =new ListNode(0);
+//        ListNode node =new ListNode(0);
+        String a = "asdasd111";
+        String b = "12316161";
+//        System.out.println(a.hashCode() % 3);
+//        System.out.println(b.hashCode() % 3);
+        List<String> ids = Arrays.asList("q321231","asda3312",a,b,"1111","q321231","asda3312",a,b,"9999999999");
+        ids.stream().map(str->str.hashCode() % 3).forEach(System.out::println);
     }
 
 
