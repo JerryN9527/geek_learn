@@ -1,5 +1,8 @@
 package com.example.spring;
 
+import lombok.Data;
+import lombok.extern.java.Log;
+
 import java.sql.*;
 
 /**
