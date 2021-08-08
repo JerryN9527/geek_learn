@@ -86,6 +86,12 @@
 基于：AbstractRoutingDataSource 
 
 &emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java)   
+&emsp;&emsp;方法：testDataSource() 测试切换数据源    
 
 10.（必做）读写分离 - 数据库框架版本 2.0   
 基于：shardingSphere-JDBC
+
+&emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java)  
+&emsp;&emsp;方法：testReaderAndWriter()  测试写入  
+&emsp;&emsp;方法：testReaderAndWriter()  测试读取 
+ 

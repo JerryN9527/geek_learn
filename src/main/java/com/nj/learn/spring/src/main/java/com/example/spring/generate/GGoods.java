@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 /**
  * g_goods
  * @author 
  */
 @Data
+@Accessors(chain = true)
 public class GGoods implements Serializable {
     private Integer id;
 

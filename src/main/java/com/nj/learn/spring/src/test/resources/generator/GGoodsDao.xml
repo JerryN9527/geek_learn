@@ -16,7 +16,7 @@
     id, g_name, g_unit_price, g_commit, g_about, g_image_url, del_sign, creat_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from g_goods
     where id = #{id,jdbcType=INTEGER}
@@ -35,16 +35,19 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.spring.generate.GGoods" useGeneratedKeys="true">
-    insert into g_goods (g_name, g_unit_price, g_commit, 
-      g_about, g_image_url, del_sign, 
+    insert into g_goods (g_name, g_unit_price, g_commit,
+      g_about, g_image_url, del_sign,
       creat_time, update_time)
-    values (#{gName,jdbcType=VARCHAR}, #{gUnitPrice,jdbcType=DOUBLE}, #{gCommit,jdbcType=VARCHAR}, 
-      #{gAbout,jdbcType=VARCHAR}, #{gImageUrl,jdbcType=VARCHAR}, #{delSign,jdbcType=BIT}, 
+    values (#{gName,jdbcType=VARCHAR}, #{gUnitPrice,jdbcType=DOUBLE}, #{gCommit,jdbcType=VARCHAR},
+      #{gAbout,jdbcType=VARCHAR}, #{gImageUrl,jdbcType=VARCHAR}, #{delSign,jdbcType=BIT},
       #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.spring.generate.GGoods" useGeneratedKeys="true">
     insert into g_goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="gName != null">
         g_name,
       </if>
@@ -71,6 +74,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
       <if test="gName != null">
         #{gName,jdbcType=VARCHAR},
       </if>

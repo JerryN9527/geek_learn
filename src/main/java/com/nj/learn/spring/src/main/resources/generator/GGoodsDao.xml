@@ -45,6 +45,9 @@
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.spring.generate.GGoods" useGeneratedKeys="true">
     insert into g_goods
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="gName != null">
         g_name,
       </if>
@@ -71,6 +74,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
       <if test="gName != null">
         #{gName,jdbcType=VARCHAR},
       </if>
