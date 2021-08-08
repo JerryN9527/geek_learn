@@ -64,7 +64,7 @@
 2）使用事务，PrepareStatement 方式，批处理方式，改进上述操作。   
 3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。     
 
-&emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java) 增删改查   
+&emsp;&emsp;作业：[JdbcTest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/JdbcTest.java) 增删改查   
 
 ### 第6周作业
 
@@ -83,4 +83,9 @@
 &emsp;&emsp;作业：[pdd.pdm](src/main/java/com/nj/learn/mysql/pdd.pdm) 
 
 9.（必做）读写分离 - 动态切换数据源版本 1.0  
+基于：AbstractRoutingDataSource 
+
+&emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java)   
+
 10.（必做）读写分离 - 数据库框架版本 2.0   
+基于：shardingSphere-JDBC

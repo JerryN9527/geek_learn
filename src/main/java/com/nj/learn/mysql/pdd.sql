@@ -29,9 +29,9 @@ create table account
    user_type            bit,
    status               bit,
    primary key (id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
-alter table account comment '账户';
+
 
 /*==============================================================*/
 /* Table: g_goods                                               */
@@ -48,7 +48,7 @@ create table g_goods
    creat_time           datetime,
    update_time          datetime,
    primary key (id)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*==============================================================*/
 /* Table: g_goods_group                                         */
@@ -59,7 +59,7 @@ create table g_goods_group
    goods_id             int,
    group_id             int,
    primary key (id)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*==============================================================*/
 /* Table: g_group                                               */
@@ -75,7 +75,7 @@ create table g_group
    creat_time           datetime,
    update_time          datetime,
    primary key (id)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*==============================================================*/
 /* Table: user_addr                                             */
@@ -90,7 +90,7 @@ create table user_addr
    sign                 bit,
    is_default           boolean,
    primary key (id)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 /*==============================================================*/
 /* Table: user_info                                             */
@@ -103,9 +103,9 @@ create table user_info
    username             varchar(64),
    default_addr_id      int,
    primary key (id)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
-alter table user_info comment '用户基本详情表';
+
 
 /*==============================================================*/
 /* Table: user_order                                            */
@@ -128,5 +128,4 @@ create table user_order
    creat_time           datetime,
    update_time          datetime,
    primary key (id)
-);
-
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;

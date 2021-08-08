@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.spring.generate.GGoodsDao">
+  <resultMap id="BaseResultMap" type="com.example.spring.generate.GGoods">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="g_name" jdbcType="VARCHAR" property="gName" />
+    <result column="g_unit_price" jdbcType="DOUBLE" property="gUnitPrice" />
+    <result column="g_commit" jdbcType="VARCHAR" property="gCommit" />
+    <result column="g_about" jdbcType="VARCHAR" property="gAbout" />
+    <result column="g_image_url" jdbcType="VARCHAR" property="gImageUrl" />
+    <result column="del_sign" jdbcType="BIT" property="delSign" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, g_name, g_unit_price, g_commit, g_about, g_image_url, del_sign, creat_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from g_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="findAll" resultType="com.example.spring.generate.GGoods">
+    select
+    <include refid="Base_Column_List" />
+    from g_goods
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from g_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.spring.generate.GGoods" useGeneratedKeys="true">
+    insert into g_goods (g_name, g_unit_price, g_commit, 
+      g_about, g_image_url, del_sign, 
+      creat_time, update_time)
+    values (#{gName,jdbcType=VARCHAR}, #{gUnitPrice,jdbcType=DOUBLE}, #{gCommit,jdbcType=VARCHAR}, 
+      #{gAbout,jdbcType=VARCHAR}, #{gImageUrl,jdbcType=VARCHAR}, #{delSign,jdbcType=BIT}, 
+      #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.spring.generate.GGoods" useGeneratedKeys="true">
+    insert into g_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gName != null">
+        g_name,
+      </if>
+      <if test="gUnitPrice != null">
+        g_unit_price,
+      </if>
+      <if test="gCommit != null">
+        g_commit,
+      </if>
+      <if test="gAbout != null">
+        g_about,
+      </if>
+      <if test="gImageUrl != null">
+        g_image_url,
+      </if>
+      <if test="delSign != null">
+        del_sign,
+      </if>
+      <if test="creatTime != null">
+        creat_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gName != null">
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gUnitPrice != null">
+        #{gUnitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gCommit != null">
+        #{gCommit,jdbcType=VARCHAR},
+      </if>
+      <if test="gAbout != null">
+        #{gAbout,jdbcType=VARCHAR},
+      </if>
+      <if test="gImageUrl != null">
+        #{gImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="delSign != null">
+        #{delSign,jdbcType=BIT},
+      </if>
+      <if test="creatTime != null">
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.spring.generate.GGoods">
+    update g_goods
+    <set>
+      <if test="gName != null">
+        g_name = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gUnitPrice != null">
+        g_unit_price = #{gUnitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="gCommit != null">
+        g_commit = #{gCommit,jdbcType=VARCHAR},
+      </if>
+      <if test="gAbout != null">
+        g_about = #{gAbout,jdbcType=VARCHAR},
+      </if>
+      <if test="gImageUrl != null">
+        g_image_url = #{gImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="delSign != null">
+        del_sign = #{delSign,jdbcType=BIT},
+      </if>
+      <if test="creatTime != null">
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.spring.generate.GGoods">
+    update g_goods
+    set g_name = #{gName,jdbcType=VARCHAR},
+      g_unit_price = #{gUnitPrice,jdbcType=DOUBLE},
+      g_commit = #{gCommit,jdbcType=VARCHAR},
+      g_about = #{gAbout,jdbcType=VARCHAR},
+      g_image_url = #{gImageUrl,jdbcType=VARCHAR},
+      del_sign = #{delSign,jdbcType=BIT},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
