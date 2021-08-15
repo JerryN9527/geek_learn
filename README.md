@@ -94,3 +94,17 @@
 &emsp;&emsp;方法：testReaderAndWriter()  测试写入  
 &emsp;&emsp;方法：testReaderAndWriter()  测试读取 
  
+ ### 第8周作业
+ 
+2.（必做）设计对前面的订单表数据进行水平分库分表，拆分 2 个库，每个库 16 张表。并在新结构在演示常见的增删改查操作。代码、sql 和配置文件，上传到 Github。
+ 
+ &emsp;&emsp;作业：[DatabaseTablesTest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/DatabaseTablesTest.java)   
+ &emsp;&emsp;sql：[database-tables.sql](src/main/java/com/nj/learn/spring/src/test/resources/database-tables.sql)   
+ &emsp;&emsp;配置文件：[application-sharding-databases-tables.properties](src/main/java/com/nj/learn/spring/src/test/resources/application-sharding-databases-tables.properties)   
+ 
+6.（必做）基于 hmily TCC 或 ShardingSphere 的 Atomikos XA 实现一个简单的分布式事务应用 demo（二选一），提交到 Github。
+ 基于：AbstractRoutingDataSource 
+ 
+ &emsp;&emsp;作业：[XATest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/XATest.java)   
+ 
+ 

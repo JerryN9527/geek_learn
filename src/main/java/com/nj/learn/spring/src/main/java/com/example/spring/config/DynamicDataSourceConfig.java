@@ -16,7 +16,7 @@
 // * @author xiaohe
 // * @version V1.0.0
 // */
-////@Configuration
+//@Configuration
 //public class DynamicDataSourceConfig {
 //    @Bean
 //    @ConfigurationProperties("spring.datasource.druid.first")
