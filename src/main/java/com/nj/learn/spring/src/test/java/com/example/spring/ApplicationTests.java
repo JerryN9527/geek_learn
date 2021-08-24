@@ -1,278 +1,86 @@
 package com.example.spring;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+import com.example.spring.bean.DataSourceNames;
+import com.example.spring.config.DynamicDataSource;
+//import com.example.spring.config.DynamicDataSourceConfig;
+import com.example.spring.generate.GGoods;
+import com.example.spring.generate.GGoodsDao;
+import com.example.spring.service.GoodsService;
 import org.junit.jupiter.api.Test;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.*;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Properties;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
 
 
-/**
- * 10.（必做）研究一下 JDBC 接口和数据库连接池，掌握它们的设计和用法：
- * 1）使用 JDBC 原生接口，实现数据库的增删改查操作。
- * 2）使用事务，PrepareStatement 方式，批处理方式，改进上述操作。
- * 3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。
- */
+//@Import({DynamicDataSourceConfig.class})
+@MapperScan("com.example.spring.generate")
 @SpringBootTest
 class ApplicationTests {
 
-    private static Connection connection;
+    @Autowired
+    private GGoodsDao gGoodsDao;
 
-    static {
-        //获取连接
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC", "root", "root");
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-    }
-
-    //----------------------------------------------------1）使用 JDBC 原生接口，实现数据库的增删改查操作。
     /**
-     * 新增
+     * 测试多数据源切换
+     * 需要引入DynamicDataSourceConfig自定义配置，和启用properties文件
      * @throws SQLException
      */
     @Test
-    void createJdbc() throws SQLException {
-        if (connection == null){
-            return;
-        }
-        //设置语法
-        String sql = "insert into user (id,name,socre) values(?,?,?)";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
-        pstmt.setInt(1, 9527);
-        pstmt.setString(2, "ceshi9527");
-        pstmt.setString(3, "100");
-        //执行
-        int i = pstmt.executeUpdate();
-        System.out.println("影响行数："+i);
-        colse(null,pstmt,connection);
+    void testDataSource() {
+        //切换数据源
+        DynamicDataSource.setDataSource(DataSourceNames.FIRST);
+        List<GGoods> all = gGoodsDao.findAll();
+        System.out.println(all);
+        //清除
+        DynamicDataSource.clearDataSource();
+
+        //切换数据源
+        DynamicDataSource.setDataSource(DataSourceNames.SECOND);
+        List<GGoods> all2 = gGoodsDao.findAll();
+        System.out.println(all2);
+        //清除
+        DynamicDataSource.clearDataSource();
     }
 
-
     /**
-     * 修改
+     *
+     * 测试时，需要注掉properties文件，和spring-druid,
+     *          切换称shardingSphere配置的yml文件，和非spring的druid
+     * 依靠shardingSphere-JDBC
+     * 测试读写分离
      * @throws SQLException
      */
     @Test
-    void updateJdbc() throws SQLException {
-        if (connection == null){
-            return;
+    void testReaderAndWriter() {
+        //插入5条数据
+        for (int i = 1; i <= 5; i++) {
+            GGoods gGoods = new GGoods();
+            gGoods.setId(1001+i)
+                .setCreatTime(new Date())
+                .setUpdateTime(new Date())
+                .setDelSign(false)
+                .setGAbout("简介：测试商品"+i)
+                .setGName("测试商品"+i)
+                .setGCommit("热销")
+                .setGImageUrl("www.baidu.com")
+                .setGUnitPrice(1.1);
+            gGoodsDao.insertSelective(gGoods);
         }
-        //设置语法
-        String sql = "update user set socre = ?  where id = ?";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
-        pstmt.setInt(1, 99);
-        pstmt.setInt(2, 9527);
-        //执行
-        int i = pstmt.executeUpdate();
-        System.out.println("影响行数："+i);
-        colse(null,pstmt,connection);
     }
 
-
-
     /**
-     * 查询
-     * @throws SQLException
+     * 读取数据
      */
     @Test
-    void queryJdbc() throws SQLException {
-        if (connection == null){
-            return;
-        }
-        //创建语法对象
-        Statement statement = connection.createStatement();
-        //执行sql
-        ResultSet resultSet = statement.executeQuery("select * from user;");
-        while (resultSet.next()){
-            Map<String,Object> map = new LinkedHashMap<>();
-            map.put("id",resultSet.getInt(1));
-            map.put("name",resultSet.getString(2));
-            map.put("score",resultSet.getString(3));
-            System.out.println(map);
-        }
-
-        System.out.println("-----------参数查询-----------");
-        String sql = "select * from user where id = ?;";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
-        pstmt.setInt(1,9527);
-        resultSet = pstmt.executeQuery();
-        while (resultSet.next()){
-            Map<String,Object> map = new LinkedHashMap<>();
-            map.put("id",resultSet.getInt(1));
-            map.put("name",resultSet.getString(2));
-            map.put("score",resultSet.getString(3));
-            System.out.println(map);
-        }
-        colse(resultSet,statement,connection);
-    }
-
-    /**
-     * 删除
-     * @throws SQLException
-     */
-    @Test
-    void deletJdbc() throws SQLException {
-        if (connection == null){
-            return;
-        }
-        //设置语法
-        String sql = "delete from user  where id = ?";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
-        pstmt.setInt(1, 9527);
-        //执行
-        int i = pstmt.executeUpdate();
-        System.out.println("影响行数："+i);
-        colse(null,pstmt,connection);
-    }
-
-    //----------------------------------------------------2）使用事务，PrepareStatement 方式，批处理方式，改进上述操作。
-    /**
-     * 增加事务
-     * @throws SQLException
-     */
-    @Test
-    void transactionJdbc() throws SQLException {
-        //创建修改查询
-        if (connection == null){
-            return;
-        }
-        connection.setAutoCommit(false);
-        //设置语法
-        String sql = "insert into user (id,name,socre) values(?,?,?)";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
-
-        pstmt.setInt(1, 9527);
-        pstmt.setString(2, "ceshi9527");
-        pstmt.setString(3, "100");
-        //执行
-        int i = pstmt.executeUpdate();
-        System.out.println("影响行数："+i);
-
-        //设置语法
-        sql = "update user set socre = ?  where id = ?";
-        pstmt = connection.prepareStatement(sql);
-        pstmt.setInt(1, 99);
-        pstmt.setInt(2, 9527);
-        int i1 = 1 / 0;
-        //执行
-        i = pstmt.executeUpdate();
-        System.out.println("影响行数："+i);
-        connection.commit();
-        queryJdbc();
-    }
-
-
-
-    //----------------------------------------------------3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。
-    /**
-     * 增加事务
-     * @throws SQLException
-     */
-    @Test
-    void hikariJdbc() throws SQLException, IOException {
-        HikariDataSource dataSource = null;
-        ResultSet resultSet = null;
-        PreparedStatement pstmt = null;
-        //获取连接池
-        try {
-            InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("hikari.properties");
-            Properties props = new Properties();
-            props.load(is);
-            HikariConfig config = new HikariConfig(props);
-            dataSource = new HikariDataSource(config);
-
-            //获取连接
-            Connection connection = dataSource.getConnection();
-            connection.setAutoCommit(false);
-            //设置语法
-            String sql = "insert into user (id,name,socre) values(?,?,?)";
-            pstmt = connection.prepareStatement(sql);
-
-            pstmt.setInt(1, 9527);
-            pstmt.setString(2, "ceshi9527");
-            pstmt.setString(3, "100");
-            //执行
-            int i = pstmt.executeUpdate();
-            System.out.println("影响行数：" + i);
-
-            //设置语法
-            sql = "update user set socre = ?  where id = ?";
-            pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, 99);
-            pstmt.setInt(2, 9527);
-            //执行
-            i = pstmt.executeUpdate();
-            System.out.println("影响行数：" + i);
-            connection.commit();
-
-
-            System.out.println("-----------参数查询-----------");
-            sql = "select * from user where id = ?;";
-            pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, 9527);
-            resultSet = pstmt.executeQuery();
-            while (resultSet.next()) {
-                Map<String, Object> map = new LinkedHashMap<>();
-                map.put("id", resultSet.getInt(1));
-                map.put("name", resultSet.getString(2));
-                map.put("score", resultSet.getString(3));
-                System.out.println(map);
-            }
-        }finally {
-            //关闭连接
-            colse(resultSet,pstmt,connection);
-            if (dataSource != null){
-                dataSource.close();
-            }
-        }
-    }
-
-
-
-
-
-
-
-
-    /**
-     * 释放资源
-     * @param ret
-     * @param statement
-     * @param conn
-     */
-    public void colse(ResultSet ret,Statement statement, Connection conn){
-        // 8. 释放资源
-        if (ret != null) {
-            try {
-                ret.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if (statement != null) {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        if(conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public void testMSQuery(){
+        for (int i = 0; i < 10; i++) {
+            GGoods gGoods = gGoodsDao.selectByPrimaryKey(1001 + i);
+            System.out.println(gGoods);
         }
     }
 

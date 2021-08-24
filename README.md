@@ -64,5 +64,65 @@
 2）使用事务，PrepareStatement 方式，批处理方式，改进上述操作。   
 3）配置 Hikari 连接池，改进上述操作。提交代码到 GitHub。     
 
-&emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java) 增删改查   
+&emsp;&emsp;作业：[JdbcTest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/JdbcTest.java) 增删改查   
 
+### 第6周作业
+
+6.（必做）基于电商交易场景（用户、商品、订单），设计一套简单的表结构，提交 DDL 的 SQL 文件到 Github（后面 2 周的作业依然要是用到这个表结构）。  
+
+&emsp;&emsp;作业：[pdd.sql](src/main/java/com/nj/learn/mysql/pdd.sql)   
+&emsp;&emsp;作业：[pdd.pdm](src/main/java/com/nj/learn/mysql/pdd.pdm)  
+ 
+
+
+### 第7周作业
+
+2.（必做）按自己设计的表结构，插入 100 万订单模拟数据，测试不同方式的插入效率  
+
+&emsp;&emsp;作业：[MillionTest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/MillionTest.java)   
+
+9.（必做）读写分离 - 动态切换数据源版本 1.0  
+基于：AbstractRoutingDataSource 
+
+&emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java)   
+&emsp;&emsp;方法：testDataSource() 测试切换数据源    
+
+10.（必做）读写分离 - 数据库框架版本 2.0   
+基于：shardingSphere-JDBC
+
+&emsp;&emsp;作业：[ApplicationTests](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/ApplicationTests.java)  
+&emsp;&emsp;方法：testReaderAndWriter()  测试写入  
+&emsp;&emsp;方法：testReaderAndWriter()  测试读取 
+ 
+ ### 第8周作业
+ 
+2.（必做）设计对前面的订单表数据进行水平分库分表，拆分 2 个库，每个库 16 张表。并在新结构在演示常见的增删改查操作。代码、sql 和配置文件，上传到 Github。
+ 
+ &emsp;&emsp;作业：[DatabaseTablesTest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/DatabaseTablesTest.java)   
+ &emsp;&emsp;sql：[database-tables.sql](src/main/java/com/nj/learn/spring/src/test/resources/database-tables.sql)   
+ &emsp;&emsp;配置文件：[application-sharding-databases-tables.properties](src/main/java/com/nj/learn/spring/src/test/resources/application-sharding-databases-tables.properties)   
+ 
+6.（必做）基于 hmily TCC 或 ShardingSphere 的 Atomikos XA 实现一个简单的分布式事务应用 demo（二选一），提交到 Github。
+ 基于：AbstractRoutingDataSource 
+ 
+ &emsp;&emsp;作业：[XATest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/XATest.java)   
+ 
+  ### 第9周作业
+  
+ 2.3.（必做）改造自定义 RPC 的程序，提交到 GitHub：  
+   
+   尝试将服务端写死查找接口实现类变成泛型和反射；  
+   尝试将客户端动态代理改成 AOP，添加异常处理；  
+   尝试使用 Netty+HTTP 作为 client 端传输方式。  
+  
+  &emsp;&emsp;作业：[rpc](src/main/java/com/nj/learn/rpc)   
+  
+7.（必做）结合 dubbo+hmily，实现一个 TCC 外汇交易处理，代码提交到 GitHub:
+  
+用户 A 的美元账户和人民币账户都在 A 库，使用 1 美元兑换 7 人民币 ;  
+用户 B 的美元账户和人民币账户都在 B 库，使用 7 人民币兑换 1 美元 ;  
+设计账户表，冻结资产表，实现上述两个本地事务的分布式事务
+  
+  &emsp;&emsp;作业：[XATest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/XATest.java)   
+  
+  
