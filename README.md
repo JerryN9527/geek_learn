@@ -124,5 +124,13 @@
 设计账户表，冻结资产表，实现上述两个本地事务的分布式事务
   
   &emsp;&emsp;作业：[XATest](src/main/java/com/nj/learn/spring/src/test/java/com/example/spring/XATest.java)   
+ 
   
+  ### 第10周作业
   
+  8.（必做）基于 Redis 封装分布式数据操作：
+  
+  在 Java 中实现一个简单的分布式锁；  
+     &emsp;&emsp;作业：[UsingBlockLockProcessOne](src/main/java/com/nj/learn/redis-test/src/main/java/com/redis/redistest/zuoye/distributionLock/UsingBlockLockProcessOne.java)    
+  在 Java 中实现一个分布式计数器，模拟减库存。  
+       &emsp;&emsp;作业：[DistributionCounterExam](com\redis\redistest\zuoye\counter\DistributionCounterExam.java)    
