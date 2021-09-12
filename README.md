@@ -134,3 +134,11 @@
      &emsp;&emsp;作业：[UsingBlockLockProcessOne](src/main/java/com/nj/learn/redis-test/src/main/java/com/redis/redistest/zuoye/distributionLock/UsingBlockLockProcessOne.java)    
   在 Java 中实现一个分布式计数器，模拟减库存。  
        &emsp;&emsp;作业：[DistributionCounterExam](com\redis\redistest\zuoye\counter\DistributionCounterExam.java)    
+  
+  ### 第11周作业
+  
+  1.（必做）配置 redis 的主从复制，sentinel 高可用，Cluster 集群。  
+     &emsp;&emsp;作业：[README.md](src/main/java/com/nj/learn/worker12/README.md)     
+ 
+ 6.（必做）搭建 ActiveMQ 服务，基于 JMS，写代码分别实现对于 queue 和 topic 的消息生产和消费，代码提交到 github。  
+      &emsp;&emsp;作业：[README.md](src/main/java/com/nj/learn/worker12/activemq/README.md)     
