@@ -1,8 +1,8 @@
-package com.nj.learn.worker12.activemq;
+package com.nj.learn.redis_mq.activemq;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.command.ActiveMQTopic;
+import org.apache.activemq.command.ActiveMQQueue;
 
 import javax.jms.Destination;
 import javax.jms.MessageProducer;
@@ -10,7 +10,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import java.util.Scanner;
 
-public class TopicProductor {
+public class QueueProductor {
     public static void main(String[] args) {
         try {
             // 创建连接和会话
@@ -20,11 +20,11 @@ public class TopicProductor {
             conn.start();
             Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-            Destination destination = new ActiveMQTopic("test.topic");
+            Destination destination = new ActiveMQQueue("test.queue");
             // 创建生产者
             MessageProducer producer = session.createProducer(destination);
 
-            System.out.println("Topic productor begin to work: input some words to send, input 'end' to exit!");
+            System.out.println("productor begin to work: input some words to send, input 'end' to exit!");
             while (true) {
                 Scanner scanner = new Scanner(System.in);
                 String inputStr =scanner.next();

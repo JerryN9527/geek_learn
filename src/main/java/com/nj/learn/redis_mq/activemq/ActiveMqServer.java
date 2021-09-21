@@ -1,10 +1,9 @@
-package com.nj.learn.worker12.activemq;
+package com.nj.learn.redis_mq.activemq;
 
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.broker.jmx.ManagementContext;
 
 import java.util.Scanner;
-import java.util.concurrent.ExecutorService;
 
 public class ActiveMqServer {
     public static void main(String[] args) {

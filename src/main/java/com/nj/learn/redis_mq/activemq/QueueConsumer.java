@@ -1,14 +1,14 @@
-package com.nj.learn.worker12.activemq;
+package com.nj.learn.redis_mq.activemq;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.command.ActiveMQTopic;
+import org.apache.activemq.command.ActiveMQQueue;
 
 import javax.jms.*;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class TopicConsumer {
+public class QueueConsumer {
     public static void main(String[] args) {
         try {
             // 创建连接和会话
@@ -18,7 +18,7 @@ public class TopicConsumer {
             conn.start();
             Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-            Destination destination = new ActiveMQTopic("test.topic");
+            Destination destination = new ActiveMQQueue("test.queue");
 
             // 创建消费者
             MessageConsumer consumer = session.createConsumer(destination);
@@ -37,7 +37,7 @@ public class TopicConsumer {
             // 绑定消息监听器
             consumer.setMessageListener(listener);
 
-            System.out.println("topic consumer begin to work: if input 'end' then will exit!");
+            System.out.println("queue consumer begin to work: if input 'end' then will exit!");
             String inputStr = null;
             do {
                 Scanner scanner = new Scanner(System.in);
