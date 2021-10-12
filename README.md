@@ -153,3 +153,19 @@
  6.（必做）思考和设计自定义 MQ 第二个版本或第三个版本，写代码实现其中至少一个功能点，把设计思路和实现代码，提交到 GitHub。  
       &emsp;&emsp;作业：[README.md](src/main/java/com/nj/learn/kmq/README.md)     
 
+  ### 毕业总结
+  
+1、(必做)分别用 100 个字以上的一段话，加上一幅图 (架构图或脑图)，总结自己
+对下列技术的关键点思考和经验认识:  
+1)JVM  
+2)NIO    
+3)并发编程  
+4)Spring 和 ORM 等框架  
+5)MySQL 数据库和 SQL  
+6)分库分表  
+7)RPC 和微服务  
+8)分布式缓存  
+9)分布式消息队列  
+
+&emsp;作业：[zongjie.md](src/main/java/com/nj/learn/zongjie/zongjie.md)     
+

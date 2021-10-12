@@ -89,11 +89,6 @@ public final class Kmq {
         return null;
     }
 
-    private KmqMessage getKmqMessageByOffset(AtomicInteger offsetIndicator) {
-        int offset = offsetIndicator.getAndIncrement();
-        return queue[offset];
-    }
-
     private KmqMessage poll(AtomicInteger offsetIndicator, long timeout, TimeUnit unit) throws InterruptedException {
         long nanos = unit.toNanos(timeout);
         int offset = offsetIndicator.get();
@@ -109,6 +104,11 @@ public final class Kmq {
         } finally {
             lock.unlock();
         }
+    }
+
+    private KmqMessage getKmqMessageByOffset(AtomicInteger offsetIndicator) {
+        int offset = offsetIndicator.getAndIncrement();
+        return queue[offset];
     }
 
 
