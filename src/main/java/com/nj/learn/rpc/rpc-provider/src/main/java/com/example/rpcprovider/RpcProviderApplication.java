@@ -2,12 +2,13 @@ package com.example.rpcprovider;
 
 import com.example.rpc.api.RpcRequest;
 import com.example.rpc.server.RpcInvoker;
-import com.example.rpc.server.RpcResolver;
+import com.example.rpc.api.RpcResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ public class RpcProviderApplication {
     @Autowired
     RpcInvoker invoker;
 
-    @GetMapping("/")
+    @PostMapping("/")
     private Object ppp(@RequestBody RpcRequest request){
         return invoker.invoke(request);
     }

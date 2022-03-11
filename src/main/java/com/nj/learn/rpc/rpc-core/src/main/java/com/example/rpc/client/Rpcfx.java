@@ -1,6 +1,8 @@
 package com.example.rpc.client;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.parser.ParserConfig;
 import com.example.rpc.api.RpcRequest;
 import com.example.rpc.api.RpcResponse;
 import okhttp3.MediaType;
@@ -18,8 +20,8 @@ import java.lang.reflect.Proxy;
  */
 public class Rpcfx {
 
-    
-    
+
+
     public static <T>T create(final Class<T> tClass,final String url) {
         //用动态代理替换
         return (T)Proxy.newProxyInstance(Rpcfx.class.getClassLoader(),new Class[]{tClass},new RpcHandler(tClass, url));
@@ -30,7 +32,9 @@ public class Rpcfx {
      * 自定义处理类，动态代理实际运行的类
      */
     public static class RpcHandler implements InvocationHandler{
-        private static final MediaType JSONTYPE = MediaType.get("application/json; charset=utf-8");
+        //        public final MediaType JSONTYPE = MediaType.get("application/json; charset=utf-8");
+        public static MediaType JSONTYPE = MediaType.parse("application/json;charset=UTF-8");
+
         private final Class<?> serviceClass;
         private final String url;
 
@@ -48,8 +52,18 @@ public class Rpcfx {
             rpcRequest.setServiceClass(this.serviceClass.getName());
             //请求
             RpcResponse rpcResponse = post(rpcRequest,url);
+            if(!"200".equals(rpcResponse.getStatus())){
+                // 这里判断response.status，处理异常
+                //failed
+                throw  rpcResponse.getException();
+            }
+
+            // 考虑封装一个全局的RpcException
             //返回具体响应内容
-            return JSON.parse(rpcResponse.getResult().toString());
+            String s = rpcResponse.getResult().toString();
+            //开启autoType
+            ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
+            return JSON.parse(s);
         }
 
         /**
@@ -61,7 +75,7 @@ public class Rpcfx {
         private RpcResponse post(RpcRequest rpcRequest, String url) throws IOException {
             String reqJson = JSON.toJSONString(rpcRequest);
             System.out.println("远程请求参数： "+reqJson);
-            
+
             OkHttpClient okHttpClient = new OkHttpClient();
             Request request =  new Request.Builder()
                     .url(url)

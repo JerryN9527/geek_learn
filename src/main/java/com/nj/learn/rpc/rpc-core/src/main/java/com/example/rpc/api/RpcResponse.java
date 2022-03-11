@@ -2,6 +2,9 @@ package com.example.rpc.api;
 
 import lombok.Data;
 
+/**
+ * 响应实体
+ */
 @Data
 public class RpcResponse {
     /**
@@ -20,6 +23,6 @@ public class RpcResponse {
      */
     private String message;
 
-
+    private Exception exception;
 
 }

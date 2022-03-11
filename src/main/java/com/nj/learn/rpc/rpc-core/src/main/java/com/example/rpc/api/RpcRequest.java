@@ -2,6 +2,9 @@ package com.example.rpc.api;
 
 import lombok.Data;
 
+/**
+ * 请求实体
+ */
 @Data
 public class RpcRequest {
 
